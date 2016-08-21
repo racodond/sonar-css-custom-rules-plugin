@@ -1,0 +1,17 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+addons:
+  sonarqube: true
+
+env:
+  global:
+    - secure: "Cso57qhWzPM/6ndoFpmlig5e2U9bPvNvsLcGb7ZVv5MiAeLMo3nmp8W2xq8WLfPPMtzCWRsQYo8+VhNbYuHew6SSGoa8FpaSlD95zjVgsJu5IBoSCKwkp7JwCFY/gqk6/91bEqtsmo29EItC4/dxknv3TseHLUjlLH+CWOzSHY07/ol0lAMvb+oJOV00xeOgj0wf+HWfJHCFHyJPP58jpvvLeM1kcw4VL+BG7ilwKByWUr4zeOXbXwTlyrEImjp0gaFjJ8KBDt5g8xdDIOpwXjiUopVCQM+oyQv6C2ViD9pGTIGnwhCfpU9VqxgRgchZi+7NMRIO4xWjPuIxumciU3j0Xdb8+mT+F5tW8wy6Wcd1Ea/LOT7uZayHgrP/nmub0ShzII3zquKaY1USccqqM38wE/DeN7jZkdHbkVHKZx3pdUD+0BCRi8/85lz4yrWwA0CsQZl3/fqRvZctOEREPvQZ5CArjHGG/HEm+IGKwzCPZeb91Wy2T3k1PvpK54cJewFyCPWYHNjPplF1mu4k3hxb8gUGnqgizMAH6bCOu+Zl2r3ry1UnjZgbt04NPSFqWkAToW4MpvaNvMZ6w94YLtrUMEi0jBYfoljl62MPmydAZQ/laqEeiQ5Ye3CFsKoVHxfVntLmwhvRyfNqwzSPnLs+sJl0oZXL7ugXVd5Wf10="
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+
+script: ./travis.sh
