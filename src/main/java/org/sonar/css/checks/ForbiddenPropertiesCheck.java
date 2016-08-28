@@ -19,12 +19,10 @@
  */
 package org.sonar.css.checks;
 
-import com.google.common.collect.ImmutableSet;
-
-import java.util.Set;
-
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
+import org.sonar.css.model.property.standard.BackgroundColor;
+import org.sonar.css.model.property.standard.BackgroundImage;
 import org.sonar.plugins.css.api.tree.PropertyTree;
 import org.sonar.plugins.css.api.visitors.DoubleDispatchVisitorCheck;
 import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
@@ -37,11 +35,9 @@ import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
 @SqaleConstantRemediation("5min")
 public class ForbiddenPropertiesCheck extends DoubleDispatchVisitorCheck {
 
-  private static final Set<String> FORBIDDEN_PROPERTIES = ImmutableSet.of("background-color", "background-image");
-
   @Override
   public void visitProperty(PropertyTree tree) {
-    if (FORBIDDEN_PROPERTIES.contains(tree.standardProperty().getName())) {
+    if (tree.standardProperty() instanceof BackgroundColor || tree.standardProperty() instanceof BackgroundImage) {
       addPreciseIssue(tree, "Remove the usage of this forbidden \"" + tree.standardProperty().getName() + "\" property.");
     }
     // super method must be called in order to visit what is under the key node in the syntax tree
