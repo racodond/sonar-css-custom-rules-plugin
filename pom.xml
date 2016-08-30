@@ -58,7 +58,7 @@
     <license.title>SonarQube CSS Custom Rules Plugin Example</license.title>
     <license.owner>David RACODON</license.owner>
     <license.mailto>david.racodon@gmail.com</license.mailto>
-    <css.version>2.1-SNAPSHOT</css.version>
+    <css.version>2.1</css.version>
   </properties>
 
   <dependencies>
