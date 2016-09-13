@@ -1,5 +1,5 @@
 /*
- * SonarQube CSS Custom Rules Plugin Example
+ * SonarQube CSS/Less Custom Rules Plugin Example
  * Copyright (C) 2016-2016 David RACODON
  * david.racodon@gmail.com
  *

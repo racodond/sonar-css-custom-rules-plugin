@@ -17,41 +17,18 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonar.css;
+package org.sonar.css.checks.less;
 
-import org.sonar.css.checks.css.ForbiddenPropertiesCheck;
-import org.sonar.css.checks.css.ForbiddenUrlCheck;
-import org.sonar.plugins.css.api.CustomCssRulesDefinition;
+import java.io.File;
 
-/**
- * Extension point to define a CSS rule repository.
- */
-public class MyCssCustomRulesDefinition extends CustomCssRulesDefinition {
+import org.junit.Test;
+import org.sonar.css.checks.verifier.CssCheckVerifier;
 
-  /**
-   * Provide the repository name.
-   */
-  @Override
-  public String repositoryName() {
-    return "My CSS Custom Repository";
+public class InterpolatedPropertiesCheckTest {
+
+  @Test
+  public void test() {
+    CssCheckVerifier.verifyLessFile(new InterpolatedPropertiesCheck(), new File("src/test/resources/checks/less/interpolatedProperties.less"));
   }
 
-  /**
-   * Provide the repository key.
-   */
-  @Override
-  public String repositoryKey() {
-    return "custom-css";
-  }
-
-  /**
-   * Provide the list of classes implementing rules.
-   */
-  @Override
-  public Class[] checkClasses() {
-    return new Class[] {
-      ForbiddenPropertiesCheck.class,
-      ForbiddenUrlCheck.class,
-    };
-  }
 }

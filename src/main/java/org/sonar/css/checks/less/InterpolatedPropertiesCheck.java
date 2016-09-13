@@ -1,5 +1,5 @@
 /*
- * SonarQube CSS Custom Rules Plugin Example
+ * SonarQube CSS/Less Custom Rules Plugin Example
  * Copyright (C) 2016-2016 David RACODON
  * david.racodon@gmail.com
  *
@@ -17,39 +17,29 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonar.css.checks;
-
-import com.google.common.collect.ImmutableList;
-
-import java.util.List;
+package org.sonar.css.checks.less;
 
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
-import org.sonar.plugins.css.api.tree.Tree;
-import org.sonar.plugins.css.api.tree.UriContentTree;
-import org.sonar.plugins.css.api.visitors.SubscriptionVisitorCheck;
+import org.sonar.plugins.css.api.tree.css.PropertyTree;
+import org.sonar.plugins.css.api.visitors.DoubleDispatchVisitorCheck;
 import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
 
 @Rule(
-  key = "forbidden-url",
-  priority = Priority.CRITICAL,
-  name = "URL 'paper.gif' should never be used",
+  key = "interpolated-properties",
+  priority = Priority.MAJOR,
+  name = "Interpolated properties should not be used",
   tags = {"convention"})
 @SqaleConstantRemediation("5min")
-public class ForbiddenUrlCheck extends SubscriptionVisitorCheck {
-
-  private static final String FORBIDDEN_URL = "paper.gif";
+public class InterpolatedPropertiesCheck extends DoubleDispatchVisitorCheck {
 
   @Override
-  public List<Tree.Kind> nodesToVisit() {
-    return ImmutableList.of(Tree.Kind.URI_CONTENT);
-  }
-
-  @Override
-  public void visitNode(Tree tree) {
-    if (((UriContentTree) tree).text().toLowerCase().contains(FORBIDDEN_URL)) {
-      addPreciseIssue(tree, "Remove this usage of the forbidden \"paper.gif\" URL.");
+  public void visitProperty(PropertyTree tree) {
+    if (tree.property().isInterpolated()) {
+      addPreciseIssue(tree, "Remove this usage of the \"" + tree.property().text() + "\" interpolated property.");
     }
+    // super method must be called in order to visit what is under the key node in the syntax tree
+    super.visitProperty(tree);
   }
 
 }
