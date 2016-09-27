@@ -14,8 +14,8 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>sonar-plugin</packaging>
 
-  <name>SonarQube CSS Custom Rules Plugin Example</name>
-  <description>Sample plugin that defines SonarQube custom rules for CSS files</description>
+  <name>SonarQube CSS/Less Custom Rules Plugin Example</name>
+  <description>Sample plugin that defines SonarQube custom rules for CSS/Less files</description>
   <url>https://github.com/racodond/sonar-css-custom-rules-plugin</url>
   <inceptionYear>2016</inceptionYear>
   <organization>
@@ -55,10 +55,10 @@
   </ciManagement>
 
   <properties>
-    <license.title>SonarQube CSS Custom Rules Plugin Example</license.title>
+    <license.title>SonarQube CSS/Less Custom Rules Plugin Example</license.title>
     <license.owner>David RACODON</license.owner>
     <license.mailto>david.racodon@gmail.com</license.mailto>
-    <css.version>2.1</css.version>
+    <css.version>2.2-SNAPSHOT</css.version>
   </properties>
 
   <dependencies>

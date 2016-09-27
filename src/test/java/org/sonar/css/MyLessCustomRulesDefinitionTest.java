@@ -20,26 +20,30 @@
 package org.sonar.css;
 
 import org.junit.Test;
-import org.sonar.api.Plugin;
-import org.sonar.api.utils.Version;
+import org.sonar.api.server.rule.RulesDefinition;
+import org.sonar.check.Rule;
+import org.sonar.css.checks.less.InterpolatedPropertiesCheck;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-public class MyCssCustomRulesPluginTest {
+public class MyLessCustomRulesDefinitionTest {
 
   @Test
-  public void should_get_the_right_version() {
-    Plugin.Context context = new Plugin.Context(Version.create(5, 6));
-    new MyCssCustomRulesPlugin().define(context);
-    assertThat(context.getSonarQubeVersion().major()).isEqualTo(5);
-    assertThat(context.getSonarQubeVersion().minor()).isEqualTo(6);
-  }
+  public void test() {
+    MyLessCustomRulesDefinition rulesDefinition = new MyLessCustomRulesDefinition();
 
-  @Test
-  public void should_get_the_right_number_of_extensions() {
-    Plugin.Context context = new Plugin.Context(Version.create(5, 6));
-    new MyCssCustomRulesPlugin().define(context);
-    assertThat(context.getExtensions()).hasSize(2);
+    RulesDefinition.Context context = new RulesDefinition.Context();
+    rulesDefinition.define(context);
+
+    RulesDefinition.Repository repository = context.repository("custom-less");
+
+    assertThat(repository.name()).isEqualTo("My Less Custom Repository");
+    assertThat(repository.language()).isEqualTo("less");
+    assertThat(repository.rules()).hasSize(1);
+
+    RulesDefinition.Rule interpolatedPropertiesRule = repository.rule(InterpolatedPropertiesCheck.class.getAnnotation(Rule.class).key());
+    assertThat(interpolatedPropertiesRule).isNotNull();
+    assertThat(interpolatedPropertiesRule.name()).isEqualTo(InterpolatedPropertiesCheck.class.getAnnotation(Rule.class).name());
   }
 
 }

@@ -21,19 +21,20 @@ package org.sonar.css;
 
 import org.sonar.css.checks.css.ForbiddenPropertiesCheck;
 import org.sonar.css.checks.css.ForbiddenUrlCheck;
-import org.sonar.plugins.css.api.CustomCssRulesDefinition;
+import org.sonar.css.checks.less.InterpolatedPropertiesCheck;
+import org.sonar.plugins.css.api.CustomLessRulesDefinition;
 
 /**
- * Extension point to define a CSS rule repository.
+ * Extension point to define a Less rule repository.
  */
-public class MyCssCustomRulesDefinition extends CustomCssRulesDefinition {
+public class MyLessCustomRulesDefinition extends CustomLessRulesDefinition {
 
   /**
    * Provide the repository name.
    */
   @Override
   public String repositoryName() {
-    return "My CSS Custom Repository";
+    return "My Less Custom Repository";
   }
 
   /**
@@ -41,7 +42,7 @@ public class MyCssCustomRulesDefinition extends CustomCssRulesDefinition {
    */
   @Override
   public String repositoryKey() {
-    return "custom-css";
+    return "custom-less";
   }
 
   /**
@@ -50,8 +51,7 @@ public class MyCssCustomRulesDefinition extends CustomCssRulesDefinition {
   @Override
   public Class[] checkClasses() {
     return new Class[] {
-      ForbiddenPropertiesCheck.class,
-      ForbiddenUrlCheck.class,
+      InterpolatedPropertiesCheck.class,
     };
   }
 }

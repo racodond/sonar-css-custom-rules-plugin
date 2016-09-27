@@ -1,5 +1,5 @@
 /*
- * SonarQube CSS Custom Rules Plugin Example
+ * SonarQube CSS/Less Custom Rules Plugin Example
  * Copyright (C) 2016-2016 David RACODON
  * david.racodon@gmail.com
  *
@@ -22,7 +22,7 @@ package org.sonar.css;
 import org.junit.Test;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.check.Rule;
-import org.sonar.css.checks.ForbiddenPropertiesCheck;
+import org.sonar.css.checks.css.ForbiddenPropertiesCheck;
 
 import static org.fest.assertions.Assertions.assertThat;
 

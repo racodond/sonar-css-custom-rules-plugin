@@ -1,5 +1,5 @@
 /*
- * SonarQube CSS Custom Rules Plugin Example
+ * SonarQube CSS/Less Custom Rules Plugin Example
  * Copyright (C) 2016-2016 David RACODON
  * david.racodon@gmail.com
  *
@@ -17,21 +17,8 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonar.css.checks;
+@ParametersAreNonnullByDefault
+package org.sonar.css.checks.css;
 
-import java.io.File;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-import org.junit.Test;
-import org.sonar.css.checks.verifier.CssCheckVerifier;
-
-public class ForbiddenPropertiesCheckTest {
-
-  @Test
-  public void test() {
-    CssCheckVerifier.issues(new ForbiddenPropertiesCheck(), new File("src/test/resources/checks/forbiddenProperties.css"))
-      .next().atLine(6).withMessage("Remove the usage of this forbidden \"background-color\" property.")
-      .next().atLine(8).withMessage("Remove the usage of this forbidden \"background-image\" property.")
-      .noMore();
-  }
-
-}

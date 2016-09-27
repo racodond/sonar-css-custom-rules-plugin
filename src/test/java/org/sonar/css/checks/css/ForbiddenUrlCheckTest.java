@@ -1,5 +1,5 @@
 /*
- * SonarQube CSS Custom Rules Plugin Example
+ * SonarQube CSS/Less Custom Rules Plugin Example
  * Copyright (C) 2016-2016 David RACODON
  * david.racodon@gmail.com
  *
@@ -17,8 +17,18 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-@ParametersAreNonnullByDefault
-package org.sonar.css.checks;
+package org.sonar.css.checks.css;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.io.File;
 
+import org.junit.Test;
+import org.sonar.css.checks.verifier.CssCheckVerifier;
+
+public class ForbiddenUrlCheckTest {
+
+  @Test
+  public void test() {
+    CssCheckVerifier.verifyCssFile(new ForbiddenUrlCheck(), new File("src/test/resources/checks/css/forbiddenUrl.css"));
+  }
+
+}

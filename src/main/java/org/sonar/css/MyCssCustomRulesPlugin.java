@@ -1,5 +1,5 @@
 /*
- * SonarQube CSS Custom Rules Plugin Example
+ * SonarQube CSS/Less Custom Rules Plugin Example
  * Copyright (C) 2016-2016 David RACODON
  * david.racodon@gmail.com
  *
@@ -31,7 +31,8 @@ public class MyCssCustomRulesPlugin implements Plugin {
   public void define(Context context) {
     context.addExtensions(
       ImmutableList.of(
-        MyCssCustomRulesDefinition.class));
+        MyCssCustomRulesDefinition.class,
+        MyLessCustomRulesDefinition.class));
   }
 
 }

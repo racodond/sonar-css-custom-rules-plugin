@@ -1,5 +1,5 @@
 /*
- * SonarQube CSS Custom Rules Plugin Example
+ * SonarQube CSS/Less Custom Rules Plugin Example
  * Copyright (C) 2016-2016 David RACODON
  * david.racodon@gmail.com
  *
@@ -17,31 +17,39 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonar.css.checks;
+package org.sonar.css.checks.css;
+
+import com.google.common.collect.ImmutableList;
+
+import java.util.List;
 
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
-import org.sonar.css.model.property.standard.BackgroundColor;
-import org.sonar.css.model.property.standard.BackgroundImage;
-import org.sonar.plugins.css.api.tree.PropertyTree;
-import org.sonar.plugins.css.api.visitors.DoubleDispatchVisitorCheck;
+import org.sonar.plugins.css.api.tree.Tree;
+import org.sonar.plugins.css.api.tree.css.UriContentTree;
+import org.sonar.plugins.css.api.visitors.SubscriptionVisitorCheck;
 import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
 
 @Rule(
-  key = "forbidden-properties",
-  priority = Priority.MAJOR,
-  name = "Forbidden properties should not be used",
-  tags = {"bug"})
+  key = "forbidden-url",
+  priority = Priority.CRITICAL,
+  name = "URL 'paper.gif' should never be used",
+  tags = {"convention"})
 @SqaleConstantRemediation("5min")
-public class ForbiddenPropertiesCheck extends DoubleDispatchVisitorCheck {
+public class ForbiddenUrlCheck extends SubscriptionVisitorCheck {
+
+  private static final String FORBIDDEN_URL = "paper.gif";
 
   @Override
-  public void visitProperty(PropertyTree tree) {
-    if (tree.standardProperty() instanceof BackgroundColor || tree.standardProperty() instanceof BackgroundImage) {
-      addPreciseIssue(tree, "Remove the usage of this forbidden \"" + tree.standardProperty().getName() + "\" property.");
+  public List<Tree.Kind> nodesToVisit() {
+    return ImmutableList.of(Tree.Kind.URI_CONTENT);
+  }
+
+  @Override
+  public void visitNode(Tree tree) {
+    if (((UriContentTree) tree).text().toLowerCase().contains(FORBIDDEN_URL)) {
+      addPreciseIssue(tree, "Remove this usage of the forbidden \"paper.gif\" URL.");
     }
-    // super method must be called in order to visit what is under the key node in the syntax tree
-    super.visitProperty(tree);
   }
 
 }
