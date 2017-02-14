@@ -4,6 +4,8 @@ Sample plugin that defines SonarQube custom rules for CSS and Less files
 [![Build Status](https://api.travis-ci.org/racodond/sonar-css-custom-rules-plugin.svg?branch=master)](https://travis-ci.org/racodond/sonar-css-custom-rules-plugin)
 [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/ua8p229aypr0uf6x/branch/master?svg=true)](https://ci.appveyor.com/project/racodond/sonar-css-custom-rules-plugin/branch/master)
 [![Quality Gate](https://sonarqube.com/api/badges/gate?key=org.sonar.sonar-plugins:sonar-css-custom-rules-plugin)](https://sonarqube.com/overview?id=org.sonar.sonar-plugins%3Asonar-css-custom-rules-plugin)
+[![Twitter](https://img.shields.io/badge/Twitter-@racodond-blue.svg)](https://twitter.com/racodond)
+
 
 ## Description
 The [SonarQube CSS/Less plugin](https://github.com/racodond/sonar-css-plugin) can be enhanced by writing custom rules through a plugin using SonarQube CSS/Less API.
