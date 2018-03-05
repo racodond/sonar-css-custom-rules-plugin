@@ -10,9 +10,9 @@
   </parent>
 
   <groupId>org.sonar.sonar-plugins</groupId>
-  <artifactId>sonar-css-custom-rules-plugin</artifactId>
+  <artifactId>css-custom-rules</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>sonar-plugin</packaging>
+  <packaging>pom</packaging>
 
   <name>SonarQube CSS / SCSS / Less Custom Rules Plugin</name>
   <description>Sample plugin that defines SonarQube custom rules for CSS / SCSS / Less files</description>
@@ -39,6 +39,10 @@
     </developer>
   </developers>
 
+  <modules>
+    <module>sonar-csscustomrules-plugin</module>
+  </modules>
+
   <scm>
     <connection>scm:git@github.com:racodond/sonar-css-custom-rules-plugin.git</connection>
     <developerConnection>scm:git@github.com:racodond/sonar-css-custom-rules-plugin.git</developerConnection>
@@ -58,37 +62,62 @@
     <license.title>SonarQube CSS / SCSS / Less Custom Rules Plugin</license.title>
     <license.owner>David RACODON</license.owner>
     <license.mailto>david.racodon@gmail.com</license.mailto>
+    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.sonarsource.sonarqube</groupId>
-      <artifactId>sonar-plugin-api</artifactId>
-      <version>5.6</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.sonar-plugins.css</groupId>
-      <artifactId>sonar-css-plugin</artifactId>
-      <type>sonar-plugin</type>
-      <version>4.13</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.sonarsource.sonarqube</groupId>
+        <artifactId>sonar-plugin-api</artifactId>
+        <version>5.6</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.sonar-plugins.css</groupId>
+        <artifactId>sonar-css-plugin</artifactId>
+        <version>4.13</version>
+      </dependency>
+      <dependency>
+        <groupId>org.sonarsource.orchestrator</groupId>
+        <artifactId>sonar-orchestrator</artifactId>
+        <version>3.15.2.1322</version>
+        <exclusions>
+          <exclusion>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.sonarsource.analyzer-commons</groupId>
+        <artifactId>sonar-analyzer-commons</artifactId>
+        <version>1.5.0.178</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>24.0-jre</version>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-all</artifactId>
+        <version>1.10.19</version>
+      </dependency>
+      <dependency>
+        <groupId>org.easytesting</groupId>
+        <artifactId>fest-assert</artifactId>
+        <version>1.4</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
-        <artifactId>sonar-packaging-maven-plugin</artifactId>
-        <version>1.18.0.372</version>
-        <extensions>true</extensions>
-        <configuration>
-          <pluginClass>org.sonar.css.MyCssCustomRulesPlugin</pluginClass>
-          <basePlugin>css</basePlugin>
-        </configuration>
-      </plugin>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -103,17 +132,15 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.0</version>
+        <configuration>
+          <destFile>${sonar.jacoco.reportPath}</destFile>
+          <append>true</append>
+        </configuration>
         <executions>
           <execution>
+            <id>agent</id>
             <goals>
               <goal>prepare-agent</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>report</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>report</goal>
             </goals>
           </execution>
         </executions>
@@ -121,4 +148,12 @@
     </plugins>
   </build>
 
+  <profiles>
+    <profile>
+      <id>its</id>
+      <modules>
+        <module>its</module>
+      </modules>
+    </profile>
+  </profiles>
 </project>

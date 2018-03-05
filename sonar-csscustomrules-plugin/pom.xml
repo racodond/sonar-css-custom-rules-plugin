@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.sonar.sonar-plugins</groupId>
+    <artifactId>css-custom-rules</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>sonar-csscustomrules-plugin</artifactId>
+  <packaging>sonar-plugin</packaging>
+
+  <name>CSS / SCSS / Less Custom Rules Plugin</name>
+  <description>Sample plugin that defines SonarQube custom rules for CSS / SCSS / Less files</description>
+  <url>https://github.com/racodond/sonar-css-custom-rules-plugin</url>
+
+  <properties>
+    <sonar.pluginName>CSS / SCSS / Less Custom Rules</sonar.pluginName>
+    <sonar.pluginClass>org.sonar.css.MyCssCustomRulesPlugin</sonar.pluginClass>
+    <sonar.requirePlugins>css:4.13</sonar.requirePlugins>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.sonarsource.sonarqube</groupId>
+      <artifactId>sonar-plugin-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.sonar-plugins.css</groupId>
+      <artifactId>sonar-css-plugin</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>enforce-plugin-size</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <phase>verify</phase>
+            <configuration>
+              <rules>
+                <requireFilesSize>
+                  <maxsize>14000</maxsize>
+                  <minsize>13000</minsize>
+                  <files>
+                    <file>${project.build.directory}/${project.build.finalName}.jar</file>
+                  </files>
+                </requireFilesSize>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <configuration>
+          <destFile>${sonar.jacoco.reportPath}</destFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
