@@ -17,18 +17,8 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonar.css.checks.less;
+@ParametersAreNonnullByDefault
+package org.sonar.css.checks.scss;
 
-import java.io.File;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-import org.junit.Test;
-import org.sonar.css.checks.verifier.CssCheckVerifier;
-
-public class InterpolatedPropertiesCheckTest {
-
-  @Test
-  public void test() {
-    CssCheckVerifier.verifyLessFile(new InterpolatedPropertiesCheck(), new File("src/test/resources/checks/less/interpolatedProperties.less"));
-  }
-
-}

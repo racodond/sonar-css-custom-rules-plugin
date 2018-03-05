@@ -26,19 +26,19 @@ import org.sonar.css.checks.less.InterpolatedPropertiesCheck;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-public class MyLessCustomRulesDefinitionTest {
+public class MyScssCustomRulesDefinitionTest {
 
   @Test
   public void test() {
-    MyLessCustomRulesDefinition rulesDefinition = new MyLessCustomRulesDefinition();
+    MyScssCustomRulesDefinition rulesDefinition = new MyScssCustomRulesDefinition();
 
     RulesDefinition.Context context = new RulesDefinition.Context();
     rulesDefinition.define(context);
 
-    RulesDefinition.Repository repository = context.repository("custom-less");
+    RulesDefinition.Repository repository = context.repository("custom-scss");
 
-    assertThat(repository.name()).isEqualTo("My Less Custom Repository");
-    assertThat(repository.language()).isEqualTo("less");
+    assertThat(repository.name()).isEqualTo("My SCSS Custom Repository");
+    assertThat(repository.language()).isEqualTo("scss");
     assertThat(repository.rules()).hasSize(1);
 
     RulesDefinition.Rule interpolatedPropertiesRule = repository.rule(InterpolatedPropertiesCheck.class.getAnnotation(Rule.class).key());

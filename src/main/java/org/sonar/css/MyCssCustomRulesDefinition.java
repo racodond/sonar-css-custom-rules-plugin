@@ -1,6 +1,6 @@
 /*
- * SonarQube CSS/Less Custom Rules Plugin Example
- * Copyright (C) 2016-2016 David RACODON
+ * SonarQube CSS / SCSS / Less Custom Rules Plugin
+ * Copyright (C) 2016-2018 David RACODON
  * david.racodon@gmail.com
  *
  * This program is free software; you can redistribute it and/or
@@ -23,33 +23,21 @@ import org.sonar.css.checks.css.ForbiddenPropertiesCheck;
 import org.sonar.css.checks.css.ForbiddenUrlCheck;
 import org.sonar.plugins.css.api.CustomCssRulesDefinition;
 
-/**
- * Extension point to define a CSS rule repository.
- */
 public class MyCssCustomRulesDefinition extends CustomCssRulesDefinition {
 
-  /**
-   * Provide the repository name.
-   */
   @Override
   public String repositoryName() {
     return "My CSS Custom Repository";
   }
 
-  /**
-   * Provide the repository key.
-   */
   @Override
   public String repositoryKey() {
     return "custom-css";
   }
 
-  /**
-   * Provide the list of classes implementing rules.
-   */
   @Override
   public Class[] checkClasses() {
-    return new Class[] {
+    return new Class[]{
       ForbiddenPropertiesCheck.class,
       ForbiddenUrlCheck.class,
     };

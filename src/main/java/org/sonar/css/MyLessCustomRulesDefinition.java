@@ -1,6 +1,6 @@
 /*
- * SonarQube CSS/Less Custom Rules Plugin Example
- * Copyright (C) 2016-2016 David RACODON
+ * SonarQube CSS / SCSS / Less Custom Rules Plugin
+ * Copyright (C) 2016-2018 David RACODON
  * david.racodon@gmail.com
  *
  * This program is free software; you can redistribute it and/or
@@ -19,38 +19,24 @@
  */
 package org.sonar.css;
 
-import org.sonar.css.checks.css.ForbiddenPropertiesCheck;
-import org.sonar.css.checks.css.ForbiddenUrlCheck;
 import org.sonar.css.checks.less.InterpolatedPropertiesCheck;
 import org.sonar.plugins.css.api.CustomLessRulesDefinition;
 
-/**
- * Extension point to define a Less rule repository.
- */
 public class MyLessCustomRulesDefinition extends CustomLessRulesDefinition {
 
-  /**
-   * Provide the repository name.
-   */
   @Override
   public String repositoryName() {
     return "My Less Custom Repository";
   }
 
-  /**
-   * Provide the repository key.
-   */
   @Override
   public String repositoryKey() {
     return "custom-less";
   }
 
-  /**
-   * Provide the list of classes implementing rules.
-   */
   @Override
   public Class[] checkClasses() {
-    return new Class[] {
+    return new Class[]{
       InterpolatedPropertiesCheck.class,
     };
   }

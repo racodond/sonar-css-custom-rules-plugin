@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.sonarsource.parent</groupId>
     <artifactId>parent</artifactId>
-    <version>36</version>
+    <version>44</version>
   </parent>
 
   <groupId>org.sonar.sonar-plugins</groupId>
@@ -14,8 +14,8 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>sonar-plugin</packaging>
 
-  <name>SonarQube CSS/Less Custom Rules Plugin Example</name>
-  <description>Sample plugin that defines SonarQube custom rules for CSS/Less files</description>
+  <name>SonarQube CSS / SCSS / Less Custom Rules Plugin</name>
+  <description>Sample plugin that defines SonarQube custom rules for CSS / SCSS / Less files</description>
   <url>https://github.com/racodond/sonar-css-custom-rules-plugin</url>
   <inceptionYear>2016</inceptionYear>
   <organization>
@@ -55,10 +55,9 @@
   </ciManagement>
 
   <properties>
-    <license.title>SonarQube CSS/Less Custom Rules Plugin Example</license.title>
+    <license.title>SonarQube CSS / SCSS / Less Custom Rules Plugin</license.title>
     <license.owner>David RACODON</license.owner>
     <license.mailto>david.racodon@gmail.com</license.mailto>
-    <css.version>2.2</css.version>
   </properties>
 
   <dependencies>
@@ -72,24 +71,8 @@
       <groupId>org.codehaus.sonar-plugins.css</groupId>
       <artifactId>sonar-css-plugin</artifactId>
       <type>sonar-plugin</type>
-      <version>${css.version}</version>
+      <version>4.13</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.sonar-plugins.css</groupId>
-      <artifactId>css-checks-testkit</artifactId>
-      <version>${css.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>19.0</version>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.10</version>
     </dependency>
   </dependencies>
 
@@ -98,7 +81,7 @@
       <plugin>
         <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
         <artifactId>sonar-packaging-maven-plugin</artifactId>
-        <version>1.15</version>
+        <version>1.18.0.372</version>
         <extensions>true</extensions>
         <configuration>
           <pluginClass>org.sonar.css.MyCssCustomRulesPlugin</pluginClass>
@@ -108,7 +91,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.7.0</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>

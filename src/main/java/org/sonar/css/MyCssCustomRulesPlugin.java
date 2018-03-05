@@ -1,6 +1,6 @@
 /*
- * SonarQube CSS/Less Custom Rules Plugin Example
- * Copyright (C) 2016-2016 David RACODON
+ * SonarQube CSS / SCSS / Less Custom Rules Plugin
+ * Copyright (C) 2016-2018 David RACODON
  * david.racodon@gmail.com
  *
  * This program is free software; you can redistribute it and/or
@@ -22,9 +22,6 @@ package org.sonar.css;
 import com.google.common.collect.ImmutableList;
 import org.sonar.api.Plugin;
 
-/**
- * Extension point to define a SonarQube plugin.
- */
 public class MyCssCustomRulesPlugin implements Plugin {
 
   @Override
@@ -32,7 +29,8 @@ public class MyCssCustomRulesPlugin implements Plugin {
     context.addExtensions(
       ImmutableList.of(
         MyCssCustomRulesDefinition.class,
-        MyLessCustomRulesDefinition.class));
+        MyLessCustomRulesDefinition.class,
+        MyScssCustomRulesDefinition.class));
   }
 
 }

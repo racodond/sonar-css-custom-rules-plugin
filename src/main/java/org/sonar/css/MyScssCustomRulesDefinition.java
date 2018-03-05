@@ -17,18 +17,27 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonar.css.checks.less;
+package org.sonar.css;
 
-import java.io.File;
+import org.sonar.css.checks.scss.InterpolatedPropertiesCheck;
+import org.sonar.plugins.css.api.CustomScssRulesDefinition;
 
-import org.junit.Test;
-import org.sonar.css.checks.verifier.CssCheckVerifier;
+public class MyScssCustomRulesDefinition extends CustomScssRulesDefinition {
 
-public class InterpolatedPropertiesCheckTest {
-
-  @Test
-  public void test() {
-    CssCheckVerifier.verifyLessFile(new InterpolatedPropertiesCheck(), new File("src/test/resources/checks/less/interpolatedProperties.less"));
+  @Override
+  public String repositoryName() {
+    return "My SCSS Custom Repository";
   }
 
+  @Override
+  public String repositoryKey() {
+    return "custom-scss";
+  }
+
+  @Override
+  public Class[] checkClasses() {
+    return new Class[]{
+      InterpolatedPropertiesCheck.class,
+    };
+  }
 }

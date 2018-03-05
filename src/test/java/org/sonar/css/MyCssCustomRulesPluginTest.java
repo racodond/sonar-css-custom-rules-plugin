@@ -1,6 +1,6 @@
 /*
- * SonarQube CSS/Less Custom Rules Plugin Example
- * Copyright (C) 2016-2016 David RACODON
+ * SonarQube CSS / SCSS / Less Custom Rules Plugin
+ * Copyright (C) 2016-2018 David RACODON
  * david.racodon@gmail.com
  *
  * This program is free software; you can redistribute it and/or
@@ -39,7 +39,7 @@ public class MyCssCustomRulesPluginTest {
   public void should_get_the_right_number_of_extensions() {
     Plugin.Context context = new Plugin.Context(Version.create(5, 6));
     new MyCssCustomRulesPlugin().define(context);
-    assertThat(context.getExtensions()).hasSize(2);
+    assertThat(context.getExtensions()).hasSize(3);
   }
 
 }
