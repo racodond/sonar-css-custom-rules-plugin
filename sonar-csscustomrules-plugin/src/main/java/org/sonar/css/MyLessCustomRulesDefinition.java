@@ -31,6 +31,7 @@ public class MyLessCustomRulesDefinition extends CustomLessRulesDefinition {
 
   @Override
   public String repositoryKey() {
+    System.out.print("aaa");
     return "customless";
   }
 
