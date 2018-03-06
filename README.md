@@ -32,7 +32,8 @@ This sample plugin is designed to help you get started writing your own plugin a
 * Create a [standard SonarQube plugin](https://docs.sonarqube.org/display/DEV/Build+Plugin) from scratch or start from this sample plugin
 * Attach this plugin to the SonarQube CSS / SCSS / Less plugin through the [POM](sonar-csscustomrules-plugin/pom.xml):
   * Add the [dependency](sonar-csscustomrules-plugin/pom.xml#L33) to the CSS / SCSS / Less plugin
-  * [Require a minimal version of the CSS / SCSS / Less plugin](sonar-csscustomrules-plugin/pom.xml#L22)
+  * [Base the plugin on the CSS / SCSS / Less plugin](sonar-csscustomrules-plugin/pom.xml#L22)
+  * [Require a minimal version of the CSS / SCSS / Less plugin](sonar-csscustomrules-plugin/pom.xml#L23)
 * Implement the following extension points:
   * [Plugin](http://javadocs.sonarsource.org/latest/apidocs/index.html?org/sonar/api/Plugin.html) as in [`MyCssCustomRulesPlugin.java`](sonar-csscustomrules-plugin/src/main/java/org/sonar/css/MyCssCustomRulesPlugin.java)
   * [RulesDefinition](http://javadocs.sonarsource.org/latest/apidocs/index.html?org/sonar/api/server/rule/RulesDefinition.html) as in [`MyCssCustomRulesDefinition.java`](sonar-csscustomrules-plugin/src/main/java/org/sonar/css/MyCssCustomRulesDefinition.java)

@@ -13,12 +13,13 @@
   <packaging>sonar-plugin</packaging>
 
   <name>CSS / SCSS / Less Custom Rules Plugin</name>
-  <description>Sample plugin that defines SonarQube custom rules for CSS / SCSS / Less files</description>
+  <description>Sample plugin that defines custom CSS / SCSS / Less rules</description>
   <url>https://github.com/racodond/sonar-css-custom-rules-plugin</url>
 
   <properties>
     <sonar.pluginName>CSS / SCSS / Less Custom Rules</sonar.pluginName>
     <sonar.pluginClass>org.sonar.css.MyCssCustomRulesPlugin</sonar.pluginClass>
+    <sonar.basePlugin>css</sonar.basePlugin>
     <sonar.requirePlugins>css:4.13</sonar.requirePlugins>
   </properties>
 
