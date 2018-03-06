@@ -1,6 +1,4 @@
-Sample plugin that defines SonarQube custom rules for CSS, SCSS and Less files
-====================
-
+[![Release](https://img.shields.io/github/release/racodond/sonar-css-custom-rules-plugin.svg)](https://github.com/racodond/sonar-css-custom-rules-plugin/releases/latest)
 [![Build Status](https://api.travis-ci.org/racodond/sonar-css-custom-rules-plugin.svg?branch=master)](https://travis-ci.org/racodond/sonar-css-custom-rules-plugin)
 [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/ua8p229aypr0uf6x/branch/master?svg=true)](https://ci.appveyor.com/project/racodond/sonar-css-custom-rules-plugin/branch/master)
 
@@ -9,6 +7,8 @@ Sample plugin that defines SonarQube custom rules for CSS, SCSS and Less files
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=org.sonar.sonar-plugins%3Acss-custom-rules&metric=ncloc)](https://sonarcloud.io/dashboard?id=org.sonar.sonar-plugins%3Acss-custom-rules)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=org.sonar.sonar-plugins%3Acss-custom-rules&metric=coverage)](https://sonarcloud.io/dashboard?id=org.sonar.sonar-plugins%3Acss-custom-rules)
 
+
+# Sample plugin that defines SonarQube custom rules for CSS, SCSS and Less files
 
 ## Description
 The [SonarQube CSS / SCSS / Less Analyzer](https://github.com/racodond/sonar-css-plugin) can be enhanced by writing custom rules through a plugin using SonarQube CSS / SCSS / Less API.
